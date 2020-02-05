@@ -12,6 +12,7 @@ class TestOutlineRect extends TestHarness {
 	let lineThickness = 2;
 
 		let r = new OutlineRect(10, 10, 50, 50, "red", 2);
+		// console.log(r.getBoundingBox())
 		topGroup.addChild(r);
 		await this.waitForUser();
 		
