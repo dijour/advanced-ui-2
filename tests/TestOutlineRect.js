@@ -16,7 +16,7 @@ class TestOutlineRect extends TestHarness {
 		topGroup.addChild(r);
 		await this.waitForUser();
 		
-		this.message("moving rectangle with setX(), setY()");
+		this.message("moving rectangle");
 		let x,y
 		for (x = 10; x < 150; x += 30) {
 			r.x = x;

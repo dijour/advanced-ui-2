@@ -15,22 +15,31 @@ class TestHarness {
   message(str) {
     this.testRig.message(str);
   }
+  messageSpan(str) {
+    this.testRig.messageSpan(str);
+  }
 
+    /* Use this as: 
+        await this.waitForUser();
+    */
   async waitForUser() {
     return this.testRig.waitForUser();
   }
+  // returns a random int between 0..(num-1) inclusive
   RandomInt(num) {
-		return Math.floor(Math.random() * (num));
+		return Math.floor(Math.random() * num);
 	}
-	sleep(milliseconds) { 
-		let timeStart = new Date().getTime(); 
-		while (true) { 
-			let elapsedTime = new Date().getTime() - timeStart; 
-			if (elapsedTime > milliseconds) { 
-				break; 
-			} 
-		} 
-	}
+  
+  /* Use this as: 
+    await this.sleep(1000); 
+  */
+  async sleep(milleseconds) {
+    return new Promise(accept => {
+      setTimeout(() => accept(), milleseconds);
+    });
+}
+
+
 }
 
 /*
@@ -55,9 +64,23 @@ class TestRig {
     this.testConsole.prepend(msg);
   }
 
+  /* prints the str on the pretend console at the bottom of the test canvas, 
+     followed by a newline, using <p> */
   message(str) {
     let msg = document.createElement("p");
     msg.innerHTML = str;
     this.testConsole.prepend(msg);
+  }
+   /* prints the str on the pretend console at the bottom of the test canvas, 
+     on the same line as the previous output, using <span> */
+  messageSpan(str) {
+    let latestMsg = this.testConsole.firstElementChild;
+    // in case there is no existing line
+    if (!latestMsg) this.message(str);
+    else {
+      let msg = document.createElement("span");
+      msg.innerHTML = str;
+      latestMsg.appendChild(msg);
+    }
   }
 }
