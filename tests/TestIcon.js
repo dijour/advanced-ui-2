@@ -10,5 +10,8 @@ class TestIcon extends TestHarness {
       this.message("creating red OutlineRect");
   
       topGroup.addChild(new Icon("jslogo.png", 10, 10))
+
+      this.topGraphics.redraw();
+
     }
   }

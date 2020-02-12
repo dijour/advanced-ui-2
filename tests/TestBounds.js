@@ -1,0 +1,97 @@
+class TestBounds extends TestHarness {
+  
+	async runTest() {
+	  this.message("topGroup");
+	  let topGroup = new SimpleGroup (0,0,300,400);
+	  this.topGraphics.addChild(topGroup);
+	  const ctx = this.topGraphics.ctx;
+  
+          this.message("OutlineRect");
+          let OR1 = new OutlineRect(10, 10, 50, 50, "black", 3);
+          console.log(OR1.getBoundingBox())
+          let OR2 = new OutlineRect(70, 10, 80, 50, "red", 1)
+		  topGroup.addChild(OR1);
+          topGroup.addChild(OR2);
+          let bounds = OR2.getBoundingBox();
+          console.log(OR2.x)
+          console.log(bounds);
+          let w1 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "blue")
+          
+          this.topGraphics.redraw();
+          await this.waitForUser();
+
+          topGroup.addChild(w1);
+          this.topGraphics.redraw();
+
+  
+          this.message("FilledRect");
+          let FR1 = new FilledRect(10, 70, 50, 50, "black");
+          let FR2 = new FilledRect(70, 70, 80, 50, "red");
+          topGroup.addChild(FR1);
+          topGroup.addChild(FR2);
+          bounds = FR2.getBoundingBox();
+          let w2 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "yellow")
+          this.topGraphics.redraw();
+          await this.waitForUser();
+          topGroup.addChild(w2);
+          this.topGraphics.redraw();
+
+
+  
+          this.message("Line");
+        
+          let L1 = new Line(10, 130, 10, 180, "black", 1)
+          let L2 = new Line(20, 130, 60, 130, "red", 3)
+          let L3 = new Line(70, 130, 120, 180, "blue", 10)
+          let L4 = new Line(70, 130, 120, 180, "blue", 10)
+
+		  topGroup.addChild(L1);
+		  topGroup.addChild(L2);
+          topGroup.addChild(L3);
+          
+          bounds = L3.getBoundingBox();
+          console.log(bounds)
+          let w3 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "green")
+          this.topGraphics.redraw();
+          await this.waitForUser();
+          topGroup.addChild(w3);
+          this.topGraphics.redraw();
+
+          await this.waitForUser();
+          topGroup.addChild(L4);
+          this.topGraphics.redraw();
+  
+		  // this.message("Icon");
+		  // topGroup.addChild(new Icon("jslogo.png", 10, 200));
+		  // topGroup.addChild(new Icon("dog.png", 80, 200));
+  
+      this.message("Text");
+      let T1 = new Text("going", 10, 350, "", "black", ctx)
+      let T2 = new Text("going", 70, 350, "SansSerif", "red", ctx)
+      let T3 = new Text("gone", 140, 350, "Serif", "green", ctx)
+		  topGroup.addChild(T1);
+		  topGroup.addChild(T2);
+      topGroup.addChild(T3);
+      
+      bounds = T1.getBoundingBox();
+      console.log(bounds)
+      let w4 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "green")
+      this.topGraphics.redraw();
+      await this.waitForUser();
+      topGroup.addChild(w4);
+      this.topGraphics.redraw();
+
+      await this.waitForUser();
+
+      topGroup.addChild(new Line(10, 350, 250, 350, "black", 1));
+    
+      topGroup.resizeToChildren();
+
+      // console.log(topGroup.getBoundingBox());
+
+	  this.topGraphics.redraw();
+  
+		  this.message("all done");
+	}
+  }
+  
