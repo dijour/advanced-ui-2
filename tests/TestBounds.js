@@ -2,7 +2,7 @@ class TestBounds extends TestHarness {
   
 	async runTest() {
 	  this.message("topGroup");
-	  let topGroup = new SimpleGroup (0,0,300,400);
+	  let topGroup = new SimpleGroup (0,0,80,80);
 	  this.topGraphics.addChild(topGroup);
 	  const ctx = this.topGraphics.ctx;
   
@@ -66,9 +66,9 @@ class TestBounds extends TestHarness {
 		  // topGroup.addChild(new Icon("dog.png", 80, 200));
   
       this.message("Text");
-      let T1 = new Text("going", 10, 350, "", "black", ctx)
-      let T2 = new Text("going", 70, 350, "SansSerif", "red", ctx)
-      let T3 = new Text("gone", 140, 350, "Serif", "green", ctx)
+      let T1 = new Text("This is a test for Bennett, sir Bennett", 10, 350, "12px Arial", "black", ctx)
+      let T2 = new Text("going", 70, 350, "30px Times", "red", ctx)
+      let T3 = new Text("gone", 140, 350, "40px Serif", "green", ctx)
 		  topGroup.addChild(T1);
 		  topGroup.addChild(T2);
       topGroup.addChild(T3);
@@ -83,11 +83,19 @@ class TestBounds extends TestHarness {
 
       await this.waitForUser();
 
+      topGroup.removeChild(w4);
+
+      T1.moveTo(20, 360);
+
       topGroup.addChild(new Line(10, 350, 250, 350, "black", 1));
     
       topGroup.resizeToChildren();
 
-      // console.log(topGroup.getBoundingBox());
+      let newBounds = topGroup.getBoundingBox();
+
+      let OR3 = new OutlineRect(newBounds.x, newBounds.y, newBounds.width, newBounds.height, "black", 3);
+
+      topGroup.addChild(OR3);
 
 	  this.topGraphics.redraw();
   
