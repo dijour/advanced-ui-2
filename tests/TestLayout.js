@@ -2,7 +2,7 @@ class TestLayout extends TestHarness {
   
 	async runTest() {
 	  this.message("topGroup");
-	  let topGroup = new LayoutGroup(50, 50,1000,1000, 0, 40);
+	  let topGroup = new LayoutGroup(50, 50,200,300, 0, 40);
 	  this.topGraphics.addChild(topGroup);
 	  const ctx = this.topGraphics.ctx;
   
@@ -99,7 +99,9 @@ class TestLayout extends TestHarness {
 
       topGroup.resizeToChildren();
 
-      // let newBounds = topGroup.getBoundingBox();
+      let newBounds = topGroup.getBoundingBox();
+
+      console.log(newBounds)
 
       // console.log(newBounds);
       // let OR3 = new OutlineRect(newBounds.x, newBounds.y, newBounds.width, newBounds.height, "black", 1);

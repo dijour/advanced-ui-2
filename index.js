@@ -4,8 +4,9 @@ const topGraphics = new TopGraphics (canvas);
 /* PUT TESTING HERE */
 
 /* only uncomment one of these at a time */
-// const t1 = new TestBounds(topGraphics);
-const t1 = new TestLayout(topGraphics);
+const t1 = new TestBounds(topGraphics);
+// const t1 = new TestScaledGroup(topGraphics);
+// const t1 = new TestLayout(topGraphics);
 // const t1 = new TestTestHarness(topGraphics);
 // const t1 = new TestAllObjects(topGraphics);
 // const t1 = new TestLayoutGroup(topGraphics);

@@ -1,10 +1,30 @@
-class TestBounds extends TestHarness {
+class TestScaledGroup extends TestHarness {
   
 	async runTest() {
 	  this.message("topGroup");
-	  let topGroup = new SimpleGroup (5,5,300,400);
-	  this.topGraphics.addChild(topGroup);
-	  const ctx = this.topGraphics.ctx;
+	  let topGroup = new ScaledGroup(50, 50,200,300, 2, 2);
+	//   this.topGraphics.addChild(topGroup);
+      const ctx = this.topGraphics.ctx;
+      
+
+
+	  let topGroup2 = new SimpleGroup(0, 0,700,700);
+	  this.topGraphics.addChild(topGroup2);
+  
+          this.message("OutlineRect");
+          let G21 = new OutlineRect(200, 10, 50, 50, "black", 3);
+          let G22 = new OutlineRect(250, 10, 80, 50, "red", 1)
+
+          topGroup2.addChild(G21)
+          topGroup2.addChild(G22)
+
+
+          this.topGraphics.redraw();
+
+          await this.waitForUser();
+
+            topGroup2.addChild(topGroup);
+
   
           this.message("OutlineRect");
           let OR1 = new OutlineRect(10, 10, 50, 50, "black", 3);
@@ -12,15 +32,15 @@ class TestBounds extends TestHarness {
           let OR2 = new OutlineRect(70, 10, 80, 50, "red", 1)
 		      topGroup.addChild(OR1);
           topGroup.addChild(OR2);
-          let bounds = OR1.getBoundingBox();
+          // let bounds = OR2.getBoundingBox();
           console.log(OR2.x)
-          console.log(bounds);
-          let w1 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "blue")
+          // console.log(bounds);
+          // let w1 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "blue")
           
           this.topGraphics.redraw();
           await this.waitForUser();
 
-          topGroup.addChild(w1);
+          // topGroup.addChild(w1);
           this.topGraphics.redraw();
 
   
@@ -29,11 +49,11 @@ class TestBounds extends TestHarness {
           let FR2 = new FilledRect(70, 70, 80, 50, "red");
           topGroup.addChild(FR1);
           topGroup.addChild(FR2);
-          bounds = FR2.getBoundingBox();
-          let w2 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "yellow")
+          // bounds = FR2.getBoundingBox();
+          // let w2 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "yellow")
           this.topGraphics.redraw();
           await this.waitForUser();
-          topGroup.addChild(w2);
+          // topGroup.addChild(w2);
           this.topGraphics.redraw();
 
 
@@ -49,26 +69,21 @@ class TestBounds extends TestHarness {
           topGroup.addChild(L2);
           topGroup.addChild(L3);
           
-          bounds = L3.getBoundingBox();
-          console.log(bounds)
-          let w3 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "green")
+          // bounds = L3.getBoundingBox();
+          // console.log(bounds)
+          // let w3 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "green")
           this.topGraphics.redraw();
           await this.waitForUser();
-          topGroup.addChild(w3);
+          // topGroup.addChild(w3);
           this.topGraphics.redraw();
 
           await this.waitForUser();
           topGroup.addChild(L4);
           this.topGraphics.redraw();
   
-          this.message("Icon");
-          let icon1 = new Icon("jslogo.png", 10, 200)
-          topGroup.addChild(icon1);
-          let icon2 = new Icon("dog.png", 80, 200)
-          topGroup.addChild(icon2);
-          console.log(topGroup);
-          this.topGraphics.redraw();
-          await this.waitForUser();
+          // this.message("Icon");
+          // topGroup.addChild(new Icon("jslogo.png", 10, 200));
+          // topGroup.addChild(new Icon("dog.png", 80, 200));
   
       this.message("Text");
       let T1 = new Text("This is a test for Bennett, sir Bennett Gg", 10, 350, "12px Arial", "black", ctx)
@@ -78,19 +93,17 @@ class TestBounds extends TestHarness {
 		  topGroup.addChild(T2);
       topGroup.addChild(T3);
       
-      bounds = T3.getBoundingBox();
-      console.log(bounds)
-      let w4 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "green")
+      // bounds = T3.getBoundingBox();
+      // console.log(bounds)
+      // let w4 = new FilledRect(bounds.x, bounds.y, bounds.width, bounds.height, "green")
       this.topGraphics.redraw();
       await this.waitForUser();
-      topGroup.addChild(w4);
+      // topGroup.addChild(w4);
       this.topGraphics.redraw();
 
       await this.waitForUser();
 
-      topGroup.bringChildToFront(icon1);
-
-      topGroup.removeChild(w4);
+      // topGroup.removeChild(w4);
 
       T1.moveTo(20, 360);
 
@@ -108,12 +121,18 @@ class TestBounds extends TestHarness {
 
       let newBounds = topGroup.getBoundingBox();
 
-      console.log(newBounds);
-      // let OR3 = new OutlineRect(newBounds.x, newBounds.y, newBounds.width, newBounds.height, "black", 1);
+      console.log(newBounds)
 
-      // topGroup.addChild(OR3);
+      // console.log(newBounds);
+      let OR3 = new OutlineRect(newBounds.x, newBounds.y, newBounds.width, newBounds.height, "black", 1);
 
-	    this.topGraphics.redraw();
+      topGroup.addChild(OR3);
+
+      topGroup.scaleX = 3;
+      topGroup.scaleY = 1;
+
+        this.topGraphics.redraw();
+        
   
 		  this.message("all done");
 	}
