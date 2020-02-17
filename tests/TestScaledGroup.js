@@ -2,7 +2,7 @@ class TestScaledGroup extends TestHarness {
   
 	async runTest() {
 	  this.message("topGroup");
-	  let topGroup = new ScaledGroup(50, 50,200,300, 2, 2);
+	  let topGroup = new ScaledGroup(0, 0, 200,300, 2, 2);
 	//   this.topGraphics.addChild(topGroup);
       const ctx = this.topGraphics.ctx;
       

@@ -104,9 +104,9 @@ class TestLayout extends TestHarness {
       console.log(newBounds)
 
       // console.log(newBounds);
-      // let OR3 = new OutlineRect(newBounds.x, newBounds.y, newBounds.width, newBounds.height, "black", 1);
+      let OR3 = new OutlineRect(newBounds.x, newBounds.y, newBounds.width, newBounds.height, "black", 1);
 
-      // topGroup.addChild(OR3);
+      topGroup.addChild(OR3);
 
 	    this.topGraphics.redraw();
   
