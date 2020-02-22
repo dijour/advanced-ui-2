@@ -86,7 +86,7 @@ class TestScaledGroup extends TestHarness {
           // topGroup.addChild(new Icon("dog.png", 80, 200));
   
       this.message("Text");
-      let T1 = new Text("This is a test for Bennett, sir Bennett Gg", 10, 350, "12px Arial", "black", ctx)
+      let T1 = new Text("This is a test for dean, sir dean Gg", 10, 350, "12px Arial", "black", ctx)
       let T2 = new Text("going", 70, 350, "30px Times", "red", ctx)
       let T3 = new Text("gone", 140, 350, "40px Serif", "green", ctx)
 		  topGroup.addChild(T1);

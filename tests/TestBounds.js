@@ -2,7 +2,7 @@ class TestBounds extends TestHarness {
   
 	async runTest() {
 	  this.message("topGroup");
-	  let topGroup = new SimpleGroup (5,5,300,400);
+	  let topGroup = new SimpleGroup (0,0,300,400);
 	  this.topGraphics.addChild(topGroup);
 	  const ctx = this.topGraphics.ctx;
   
@@ -36,6 +36,14 @@ class TestBounds extends TestHarness {
           topGroup.addChild(w2);
           this.topGraphics.redraw();
 
+
+          // this.message("Moving Group");
+          // await this.waitForUser();
+          // topGroup.moveTo(150, 150);
+
+          // let movedBounds = topGroup.getBoundingBox();
+          // console.log(movedBounds)
+          // this.topGraphics.redraw();
 
   
           this.message("Line");
@@ -71,7 +79,7 @@ class TestBounds extends TestHarness {
           await this.waitForUser();
   
       this.message("Text");
-      let T1 = new Text("This is a test for Bennett, sir Bennett Gg", 10, 350, "12px Arial", "black", ctx)
+      let T1 = new Text("This is a test for dean, sir dean Gg", 10, 350, "12px Arial", "black", ctx)
       let T2 = new Text("going", 70, 350, "30px Times", "red", ctx)
       let T3 = new Text("gone", 140, 350, "40px Serif", "green", ctx)
 		  topGroup.addChild(T1);
