@@ -11,8 +11,11 @@ class TestLine extends TestHarness {
   
       let lineThickness = 2;
   
-          let r = new Line(50, 50, 10, 10, "blue", lineThickness);
+          let r = new Line(50, 50, 25, 45, "red", lineThickness);
           // console.log(r.getBoundingBox())
+          let r1 = new OutlineRect(50, 50, 10, 10, "red", lineThickness);
+
+
           topGroup.addChild(r);
         //   await this.waitForUser();
           
@@ -22,7 +25,7 @@ class TestLine extends TestHarness {
           this.topGraphics.redraw();
           await this.waitForUser();
           this.topGraphics.redraw();
-          r.moveTo(20, 30);
+          r.moveTo(0, 30);
           await this.waitForUser();
           this.topGraphics.redraw();
           r.moveTo(50, 30);
